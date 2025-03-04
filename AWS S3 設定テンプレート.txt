@@ -1,0 +1,91 @@
+name: 🌐 AWS S3 設定テンプレート
+
+description: AWS S3の設定や管理に関する情報を記入する
+
+title: "[S3 設定]: "
+
+labels: ["documentation", "S3"]
+
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        AWS S3 の設定情報を記入してください。
+        正確な情報を提供することで、適切な管理やトラブルシューティングが可能になります。
+
+  - type: textarea
+    id: bucket-name
+    attributes:
+      label: バケット名
+      description: 設定するS3バケットの名前を記入してください
+      placeholder: "例：my-app-bucket"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: s3-region
+    attributes:
+      label: S3リージョン
+      description: バケットのリージョンを選択してください
+      multiple: false
+      options:
+        - us-east-1
+        - us-west-2
+        - ap-northeast-1
+        - eu-west-1
+        - その他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: storage-class
+    attributes:
+      label: ストレージクラス
+      description: S3のストレージクラスを選択してください
+      multiple: false
+      options:
+        - Standard
+        - Intelligent-Tiering
+        - Standard-IA
+        - One Zone-IA
+        - Glacier
+        - Deep Archive
+    validations:
+      required: true
+
+  - type: textarea
+    id: permissions
+    attributes:
+      label: アクセス権限
+      description: IAMポリシーやバケットポリシーの設定を記入してください
+      placeholder: "例：バケットは特定のIAMロールのみアクセス可能"
+
+  - type: textarea
+    id: logging-settings
+    attributes:
+      label: ログ記録設定
+      description: サーバーアクセスログやCloudTrailの設定を記入してください
+      placeholder: "例：ログは別のS3バケットに保存される"
+
+  - type: textarea
+    id: lifecycle-rules
+    attributes:
+      label: ライフサイクルルール
+      description: S3オブジェクトのライフサイクル管理ルールを記入してください
+      placeholder: "例：30日後にStandard-IAへ移行、90日後に削除"
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: 補足情報
+      description: その他、設定に関する重要な情報を記入してください
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 確認事項
+      options:
+        - label: 設定情報が正確であることを確認しました
+          required: true

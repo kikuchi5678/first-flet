@@ -1,0 +1,105 @@
+name: 🌐 AWS RDS 設定テンプレート
+
+description: AWS RDSの設定や管理に関する情報を記入する
+
+title: "[RDS 設定]: "
+
+labels: ["documentation", "RDS"]
+
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        AWS RDS の設定情報を記入してください。
+        正確な情報を提供することで、適切な管理やトラブルシューティングが可能になります。
+
+  - type: textarea
+    id: db-instance-identifier
+    attributes:
+      label: DBインスタンス識別子
+      description: 設定するRDSインスタンスの識別子を記入してください
+      placeholder: "例：my-db-instance"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: db-engine
+    attributes:
+      label: データベースエンジン
+      description: 使用するデータベースエンジンを選択してください
+      multiple: false
+      options:
+        - MySQL
+        - PostgreSQL
+        - MariaDB
+        - Oracle
+        - SQL Server
+    validations:
+      required: true
+
+  - type: dropdown
+    id: db-instance-class
+    attributes:
+      label: インスタンスクラス
+      description: RDSのインスタンスクラスを選択してください
+      multiple: false
+      options:
+        - db.t3.micro
+        - db.t3.small
+        - db.t3.medium
+        - db.m5.large
+        - その他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: db-region
+    attributes:
+      label: RDSリージョン
+      description: RDSインスタンスのリージョンを選択してください
+      multiple: false
+      options:
+        - us-east-1
+        - us-west-2
+        - ap-northeast-1
+        - eu-west-1
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: security-group
+    attributes:
+      label: セキュリティグループ設定
+      description: セキュリティグループやネットワーク設定を記入してください
+      placeholder: "例：VPC内の特定のサブネットのみアクセス可能"
+
+  - type: textarea
+    id: backup-settings
+    attributes:
+      label: バックアップ設定
+      description: RDSのバックアップ設定を記入してください
+      placeholder: "例：毎日午前3時に自動バックアップ、7日間保持"
+
+  - type: textarea
+    id: monitoring-settings
+    attributes:
+      label: 監視設定
+      description: CloudWatchやその他の監視ツールの設定を記入してください
+      placeholder: "例：CPU使用率が80%を超えた場合にアラートを送信"
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: 補足情報
+      description: その他、設定に関する重要な情報を記入してください
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 確認事項
+      options:
+        - label: 設定情報が正確であることを確認しました
+          required: true
